@@ -4,6 +4,7 @@ import random
 import logs.log_utils as logs
 import src.model as model
 import src.game_rules as game_rules
+import graphs.graphs as graph
 
 
 def train_model(num_of_games) -> None:
@@ -135,9 +136,42 @@ def train_model(num_of_games) -> None:
     return None
 
 if __name__ == "__main__":
+    cwd_path = os.getcwd()
+    parent = os.path.dirname(cwd_path)
+    data_dir_graph = os.path.join(parent, 'graphs')
+    data_dir_csv = os.path.join(parent, 'csv')
+
+
     num_games = input("Enter number of games to train on: ")
 
     print("\n                           Current Progress                                            ")
     print("====================================================================================\n")
 
     train_model(int(num_games))
+
+    print("\n====================================================================================\n")
+    create_graph = input("\nWould you like to create graph? (y/n): ")
+    print("\n====================================================================================\n")
+
+    if create_graph == "y":
+
+        # wins graph
+        graph.create_graph(os.path.join(data_dir_csv,'wins.csv'),
+                           os.path.join(data_dir_graph, 'figures'),
+                           "Percent of Games Won Vs. Number of Games",
+                           "Percent of Games Won")
+
+        # lost Graph
+        graph.create_graph(os.path.join(data_dir_csv, 'losses.csv'),
+                           os.path.join(data_dir_graph, 'figures'),
+                           "Percent of Games Lost Vs. Number of Games",
+                           "Percent of Games Lost")
+
+        # drawn graph
+        graph.create_graph(os.path.join(data_dir_csv, 'draws.csv'),
+                           os.path.join(data_dir_graph, 'figures'),
+                           "Percent of Games Drawn Vs. Number of Games",
+                           "Percent of Games Drawn")
+
+        print("Graphs created in figures")
+
