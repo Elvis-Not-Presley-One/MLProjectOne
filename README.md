@@ -35,3 +35,43 @@ We use a Conventional Commits–style format so the git history is easy to scan.
 - `feat(api)!: rename /v1/messages to /v2/messages` ← breaking change
 
 Keep subjects short (< 72 chars), imperative mood ("add", "fix", "remove").
+
+---
+
+# Command Line 
+```bash
+#Adding matplotlib
+module load python/3.10.11
+
+python -m pip install matplotlib
+
+# Running The Main 
+cd to ML_Project_One
+
+python3 -m src.main
+```
+
+---
+
+# File Structure:
+- ML_Project_One:
+	- Src:
+		- main.py
+		- game_rules.py
+		- model.py
+	- Graphs:
+		- graphs.py
+		- Figures 
+	- Logs:
+		- log_utils.py
+		- Log.txt
+	- Csv:
+		- model_weights.csv
+		- Wins.csv
+		- losses.csv
+		- Draws.csv
+
+	- README.MD
+
+
+
