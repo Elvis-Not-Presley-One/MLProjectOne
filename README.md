@@ -1,8 +1,9 @@
-CSC426 Machine Learning - Project 1: Tic Tac Toe Learning System
-Dr. Bloodgood
+# CSC426 Machine Learning - Project 1: Tic Tac Toe Learning System
+**Dr. Bloodgood**
+
 Colin Friedlander, Tyler Elvis, Joey Crane, Mina Guglietta
 
-================================================================
+---
 
 OBJECTIVE
 ---------
