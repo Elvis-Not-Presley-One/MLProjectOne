@@ -22,13 +22,13 @@ This project runs on the TCNJ ELSA HPC system with Python 3.10+. The only extern
 module load python/3.10.11
 python -m pip install matplotlib
 
-cd ML_Project_One
+cd MLProjectOne
 python3 -m src.main
 ```
 
 ### Generating Plots
 ```bash
-cd ML_Project_One
+cd MLProjectOne
 python3 -m graphs.graphs
 ```
 
