@@ -36,7 +36,7 @@ python3 -m graphs.graphs
 
 ## Project Structure
 ```
-ML_Project_One/
+MLProjectOne/
 ├── src/
 │   ├── main.py            # Entry point, runs training loop
 │   ├── game_rules.py      # Board state, move logic, win/draw detection
