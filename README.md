@@ -55,23 +55,43 @@ python3 -m src.main
 
 # File Structure:
 - ML_Project_One:
-	- Src:
+	- src:
 		- main.py
 		- game_rules.py
 		- model.py
-	- Graphs:
+	- graphs:
 		- graphs.py
-		- Figures 
-	- Logs:
+		- figures 
+	- logs:
 		- log_utils.py
-		- Log.txt
-	- Csv:
+		- log.txt
+	- csv:
 		- model_weights.csv
-		- Wins.csv
+		- wins.csv
 		- losses.csv
-		- Draws.csv
+		- draws.csv
 
 	- README.MD
+    - 
+---
+
+## What's In What?
+**- src** 
+  - main.py, responsible for running the whole program and model training
+  - game_rules.py responsible for handling all things board related 
+  - model.py responsible for handling all functions required to create the learning model 
+  
+
+- **graphs**
+  - graphs.py responsible for creating all graphs
+  
+
+**- logs**
+  - log_utils.py responsible for handling loging information like errors or logging data into a csv
+
+**- csv**
+  - model_weights.csv responsible for holding all weights changes of the model 
+  - wins.csv, losses.csv, draws.csv responsible for holding info on wins, losses, draws
 
 
-
+**- README.MD** responsible for the readme 
