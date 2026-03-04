@@ -34,11 +34,11 @@ class Model:
         player = [1,-1]
         corner = [board[0][0], board[0][2], board[2][0], board[2][2]]
         """
-        X1: # of X in center 
-	    X2: # of O in center 
+        X1: Is X in center 
+	    X2: Is O in center 
 	    X3: # of O occupied corners 
         X4: # of X occupied corners 
-        X5: # of X two in a row with an empty third
+        X5: # of X two in a row with empty third
         X6: # of O two in a row with empty third
         X7: # of X one in a row with two empty spots
 	    X8: # of O one in a row with two empty spots
