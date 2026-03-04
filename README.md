@@ -5,89 +5,94 @@ Colin Friedlander, Tyler Elvis, Joey Crane, Mina Guglietta
 
 ---
 
-OBJECTIVE
----------
-Implement a machine learning system for tic tac toe that learns an
-evaluation function through self-play. The learner trains against an
-opponent with a fixed hand-crafted evaluation function and improves
-its strategy over time using the LMS weight update rule.
+## Objective
 
+Implement a machine learning system for tic tac toe that learns an evaluation function through self-play. The learner trains against an opponent with a fixed hand-crafted evaluation function and improves its strategy over time using the LMS weight update rule.
 
-GETTING STARTED
----------------
-This project runs on the TCNJ ELSA HPC system with Python 3.10+.
-The only external dependency is matplotlib for generating plots.
+---
 
+## Getting Started
 
-RUNNING THE PROJECT
--------------------
-Step-by-step commands to run on the TCNJ ELSA HPC system:
+### Prerequisites
 
-    module load python/3.10.11
-    python -m pip install matplotlib
-    cd ML_Project_One
-    python3 -m src.main
+This project runs on the TCNJ ELSA HPC system with Python 3.10+. The only external dependency is `matplotlib` for generating plots.
 
-This will run the full training loop where the learner plays repeated
-games against the fixed-strategy opponent and updates its weights
-after each game. Training data is written to the csv directory.
+### Running the Project
+```bash
+module load python/3.10.11
+python -m pip install matplotlib
 
+cd ML_Project_One
+python3 -m src.main
+```
 
-GENERATING PLOTS
-----------------
-After training has completed, generate the plot PDFs with:
+### Generating Plots
+```bash
+cd ML_Project_One
+python3 -m graphs.graphs
+```
 
-    cd ML_Project_One
-    python3 -m graphs.graphs
+---
 
-Plot PDFs will be saved to the graphs/figures directory.
-
-
-PROJECT STRUCTURE
------------------
+## Project Structure
+```
 ML_Project_One/
-    src/
-        main.py            - Entry point, runs training loop
-        game_rules.py      - Board state, move logic, win/draw detection
-        model.py           - Learned evaluation function and weight updates
-    graphs/
-        graphs.py          - Plot generation for wins, losses, draws
-        figures/           - Output directory for generated plot PDFs
-    logs/
-        log_utils.py       - Logging utilities and CSV data writing
-        log.txt            - Runtime log output
-    csv/
-        model_weights.csv  - Weight history across training
-        wins.csv           - Win counts per training interval
-        losses.csv         - Loss counts per training interval
-        draws.csv          - Draw counts per training interval
-    README
+├── src/
+│   ├── main.py            # Entry point, runs training loop
+│   ├── game_rules.py      # Board state, move logic, win/draw detection
+│   └── model.py           # Learned evaluation function and weight updates
+├── graphs/
+│   ├── graphs.py          # Plot generation for wins, losses, draws
+│   └── figures/           # Output directory for generated plot PDFs
+├── logs/
+│   ├── log_utils.py       # Logging utilities and CSV data writing
+│   └── log.txt            # Runtime log output
+├── csv/
+│   ├── model_weights.csv  # Weight history across training
+│   ├── wins.csv           # Win counts per training interval
+│   ├── losses.csv         # Loss counts per training interval
+│   └── draws.csv          # Draw counts per training interval
+└── README.md
+```
 
+---
 
-MODULE DESCRIPTIONS
--------------------
-src/main.py
-    Entry point for the program. Runs the training loop where the
-    learner plays repeated games against the fixed-strategy opponent
-    and updates its weights after each game.
+## Module Descriptions
 
-src/game_rules.py
-    Handles board representation, legal move generation, and
-    win/draw detection.
+### src
 
-src/model.py
-    Implements the learned evaluation function as a linear combination
-    of board features, and performs weight updates using the LMS rule.
+- **main.py** - Entry point for the program. Runs the training loop where the learner plays repeated games against the fixed-strategy opponent and updates its weights after each game.
+- **game_rules.py** - Handles board representation, legal move generation, and win/draw detection.
+- **model.py** - Implements the learned evaluation function as a linear combination of board features, and performs weight updates using the LMS rule.
 
-graphs/graphs.py
-    Reads training data from the csv directory and generates plots of
-    win, loss, and draw percentages over training games. Outputs PDF
-    files to the graphs/figures directory.
+### graphs
 
-logs/log_utils.py
-    Utility functions for logging runtime information and writing
-    training data to CSV files.
+- **graphs.py** - Reads training data from the csv directory and generates plots of win, loss, and draw percentages over training games. Outputs PDF files to the figures directory.
 
-csv/
-    Stores all training output data. Each CSV file tracks its
-    respective metric across training intervals.
+### logs
+
+- **log_utils.py** - Utility functions for logging runtime information and writing training data to CSV files.
+
+### csv
+
+Stores all training output data. Each CSV file tracks its respective metric across training intervals.
+
+---
+
+## Commit Convention
+
+We follow Conventional Commits for a clean git history.
+```
+<type>(<scope>): <subject>
+```
+
+| Type         | Purpose                                      |
+| ------------ | -------------------------------------------- |
+| **feat**     | New feature                                  |
+| **fix**      | Bug fix                                      |
+| **docs**     | Documentation only                           |
+| **refactor** | Code change that does not alter behavior      |
+| **chore**    | Maintenance (deps, formatting, repo hygiene) |
+| **ci**       | CI/CD and workflow changes                   |
+
+Keep subjects under 72 characters, imperative mood ("add", "fix", "remove").
