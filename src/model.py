@@ -161,12 +161,11 @@ class Model:
         :return: None
         """
 
-        cwd_path = os.getcwd()
-        parent = os.path.dirname(cwd_path)
-        data_dir = os.path.join(parent, 'csv')
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        data_dir_csv = os.path.join(base_dir, 'csv')
 
         try:
-            with open(os.path.join(data_dir,'model_weights.csv'), 'a', newline='') as csv_file:
+            with open(os.path.join(data_dir_csv,'model_weights.csv'), 'a', newline='') as csv_file:
                 writer = csv.writer(csv_file)
                 writer.writerow(self.weights)
         except IOError:

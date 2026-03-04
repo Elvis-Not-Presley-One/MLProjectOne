@@ -18,9 +18,8 @@ def train_model(num_of_games) -> None:
         print("ERROR: num_of_games must be greater than 0")
         return None
 
-    cwd_path = os.getcwd()
-    parent = os.path.dirname(cwd_path)
-    data_dir = os.path.join(parent, 'csv')
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_dir_csv = os.path.join(base_dir, 'csv')
 
     sum_games_won = 0
     sum_games_lost = 0
@@ -73,9 +72,9 @@ def train_model(num_of_games) -> None:
                 percent_lost = (sum_games_lost / total_games_done) * 100
                 percent_draw = (sum_games_draw / total_games_done) * 100
 
-                logs.to_csv(os.path.join(data_dir, 'wins.csv'), [total_games_done, round(percent_wins, 2)])
-                logs.to_csv(os.path.join(data_dir, 'losses.csv'), [total_games_done, round(percent_lost, 2)])
-                logs.to_csv(os.path.join(data_dir, 'draws.csv'), [total_games_done, round(percent_draw, 2)])
+                logs.to_csv(os.path.join(data_dir_csv, 'wins.csv'), [total_games_done, round(percent_wins, 2)])
+                logs.to_csv(os.path.join(data_dir_csv, 'losses.csv'), [total_games_done, round(percent_lost, 2)])
+                logs.to_csv(os.path.join(data_dir_csv, 'draws.csv'), [total_games_done, round(percent_draw, 2)])
 
                 print(f"Game: {total_games_done} | Model: {terminal} | Wins: {round(percent_wins, 1)}%, "
                       f"Losses: {round(percent_lost, 1)}%, Draws: {round(percent_draw, 1)}%")
@@ -110,9 +109,9 @@ def train_model(num_of_games) -> None:
                     percent_lost = (sum_games_lost / total_games_done) * 100
                     percent_draw = (sum_games_draw / total_games_done) * 100
 
-                    logs.to_csv(os.path.join(data_dir, 'wins.csv'), [total_games_done, round(percent_wins, 2)])
-                    logs.to_csv(os.path.join(data_dir, 'losses.csv'), [total_games_done, round(percent_lost, 2)])
-                    logs.to_csv(os.path.join(data_dir, 'draws.csv'), [total_games_done, round(percent_draw, 2)])
+                    logs.to_csv(os.path.join(data_dir_csv, 'wins.csv'), [total_games_done, round(percent_wins, 2)])
+                    logs.to_csv(os.path.join(data_dir_csv, 'losses.csv'), [total_games_done, round(percent_lost, 2)])
+                    logs.to_csv(os.path.join(data_dir_csv, 'draws.csv'), [total_games_done, round(percent_draw, 2)])
 
                     print(f"Game: {total_games_done} | Model: {terminal} | Wins: {round(percent_wins, 1)}%, "
                           f"Losses: {round(percent_lost, 1)}%, Draws: {round(percent_draw, 1)}%")
@@ -136,10 +135,9 @@ def train_model(num_of_games) -> None:
     return None
 
 if __name__ == "__main__":
-    cwd_path = os.getcwd()
-    parent = os.path.dirname(cwd_path)
-    data_dir_graph = os.path.join(parent, 'graphs')
-    data_dir_csv = os.path.join(parent, 'csv')
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_dir_graph = os.path.join(base_dir, 'graphs')
+    data_dir_csv = os.path.join(base_dir, 'csv')
 
 
     num_games = input("Enter number of games to train on: ")
