@@ -65,18 +65,40 @@ class Model:
             if value == 1:
                 board_features['x4'] += 1
 
-        # x5, x6, x7, x8
+        # Combine all rows, columns, and diagonals into a single list of "lines"
+        lines = []
+       
+        # 1. Add rows
         for row in board:
-            if 0 in row:
-                if row.count(0) == 1 and 1 in row:
+            lines.append(row)
+       
+        # 2. Add columns
+        for col in range(3):
+            lines.append([board[0][col], board[1][col], board[2][col]])
+           
+        # 3. Add diagonals
+        lines.append([board[0][0], board[1][1], board[2][2]])
+        lines.append([board[0][2], board[1][1], board[2][0]])
+
+        # x5, x6, x7, x8 (Winning paths across rows, cols, and diagonals)
+        for line in lines:
+            empty_count = line.count(0)
+           
+            # Check for two in a row with an empty third
+            if empty_count == 1:
+                if line.count(1) == 2:      # Two X's
                     board_features['x5'] += 1
-                elif row.count(0) == 1 and -1 in row:
+                elif line.count(-1) == 2:   # Two O's
                     board_features['x6'] += 1
-                elif row.count(0) == 2 and 1 in row:
+                   
+            # Check for one in a row with two empty spots
+            elif empty_count == 2:
+                if line.count(1) == 1:      # One X
                     board_features['x7'] += 1
-                elif row.count(0) == 2 and -1 in row:
+                elif line.count(-1) == 1:   # One O
                     board_features['x8'] += 1
 
+		
         return list(board_features.values())
 
     def view_weights(self):
